@@ -1,0 +1,10 @@
+Transferring files
+
+Upload file on instance to bucket:
+gsutil cp [OBJECT_LOCATION] gs://[DESTINATION_BUCKET_NAME]/
+
+Download file from bucket to local instance:
+gsutil cp gs://[BUCKET_NAME]/[OBJECT_NAME] [OBJECT_DESTINATION]
+
+Transferring file from local machine to running instance:
+gcloud compute scp [LOCAL_FILE_PATH] [INSTANCE_NAME]:~/

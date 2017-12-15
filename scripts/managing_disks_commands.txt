@@ -1,0 +1,31 @@
+Managing disks--
+
+Creating a blank disk:
+gcloud compute disks create disk-1 --size 10 --type pd-standard
+
+Attaching a created disk to a running instance:
+gcloud compute instances attach-disk [INSTANCE_NAME] --disk [DISK_NAME]
+gcloud compute instances attach-disk [INSTANCE_NAME] --disk [DISK_NAME] --mode ro   (read only mode-- if attaching disk to multiple instances)
+
+Note. After you create and attach a new disk to an instance, you must format and mount the disk so that the operating system can use the available 
+storage space.
+
+Creating a standalone boot persistent disk from an image:
+gcloud compute --project=[PROJECT_NAME] disks create [DISK_NAME] --zone=[ZONE_NAME] --type=pd-standard --image=[IMAGE] --image-project=[IMAGE_PROJECT] --size=XXGB
+
+Create a boot persistent disk from a snapshot:
+gcloud compute disks create [DISK_NAME] --source-snapshot [SNAPSHOT_NAME]
+
+Deleting a disk:
+gcloud compute disks delete [DISK_NAME]
+
+Get a list of disks:
+gcloud compute disks list
+
+Resizing a non-boot persistent disk:
+gcloud compute disks resize [DISK_NAME] --size XX --zone [ZONE_NAME]
+Note. After you resize the disk, you must resize the file system so that the operating system can access the additional space.
+
+Setting the auto-delete state of a persistent disk:
+gcloud compute instances set-disk-auto-delete [INSTANCE_NAME] [--auto-delete|--no-auto-delete] --disk [DISK_NAME]
+

@@ -1,0 +1,18 @@
+Operations on cloud storage buckets
+
+List buckets:
+gsutil ls
+
+Get bucket information:
+gsutil ls -r gs://[BUCKET_NAME]/**
+
+Make a bucket:
+gsutil mb -p [PROJECT_NAME] gs://[BUCKET_NAME]/   
+(Note BUCKET_NAME needs to be globally unique otherwise you get an error)
+
+Delete a bucket:
+gsutil rm -r gs://[BUCKET_NAME]
+
+Deleting an object from bucket:
+gsutil rm gs://[BUCKET_NAME]/[OBJECT_NAME]
+

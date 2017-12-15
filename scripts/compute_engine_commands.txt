@@ -1,0 +1,33 @@
+Google Compute Engine Commands
+
+See the full list of public images:
+gcloud compute images list
+
+See current compute instances and their status:
+gcloud compute instances list
+
+Describe the status of a single instance:
+gcloud compute instances describe [INSTANCE_NAME]
+
+Create compute instances:
+gcloud compute instances create [INSTANCE_NAME] --image-family [IMAGE_FAMILY] --image-project [IMAGE_PROJECT]
+
+Create compute instance with ssd attached:
+gcloud compute instances create [INSTANCE_NAME] --machine-type n1-standard-8 --local-ssd interface=[INTERFACE_TYPE] --image-project [IMAGE_PROJECT] --image-family [IMAGE_FAMILY]
+
+Delete compute instance:
+gcloud compute instances delete [INSTANCE_NAME]
+
+Get a list of recent system operations:
+gcloud compute operations list
+gcloud compute operations describe [NAME]
+
+Get information about region:
+gcloud compute regions list
+gcloud compute regions describe [REGION]
+
+Get information on your project:
+gcloud compute project-info describe
+
+Resetting an instance:
+gcloud compute instances reset [INSTANCE_NAME]
