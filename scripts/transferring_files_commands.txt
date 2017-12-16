@@ -1,10 +1,15 @@
 Transferring files
 
-Upload file on instance to bucket:
+#Upload file on instance to bucket:
 gsutil cp [OBJECT_LOCATION] gs://[DESTINATION_BUCKET_NAME]/
 
-Download file from bucket to local instance:
+#Download file from bucket to local instance:
 gsutil cp gs://[BUCKET_NAME]/[OBJECT_NAME] [OBJECT_DESTINATION]
 
-Transferring file from local machine to running instance:
+#Transferring file from local machine to running instance:
 gcloud compute scp [LOCAL_FILE_PATH] [INSTANCE_NAME]:~/
+
+#Transfer files from longleaf to Google bucket
+gsutil cp data/cancer-image-analysis/sample_images.7z gs://cancerdata 
+
+gsutil ls gs://cancerdata
