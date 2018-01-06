@@ -20,5 +20,37 @@ gcloud dataproc clusters delete test-cluster
 
 gsutil mb -c regional -l us-east4 gs://$DEVSHELL_PROJECT_ID
 
+# Get the Google sample code from github on Compute instance
+git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+
+#Move to folder 
+cd training-data-analyst/courses/unstructured/
+
+#Run the below script to copy files from compute local to google bucket
+./replace_and_upload.sh rashnilsandeep
+
+
+# enable gcloud commands on shell machine, scopes enables gcloud on machine
+gcloud dataproc clusters create ${CLUSTERNAME} --scopes=cloud-platform --tags codelab --zone=us-east4-a
+
+#Submit a Spark Job on cluster using gcloud
+CLUSTERNAME=test-cluster
+gcloud dataproc jobs submit spark  --cluster ${CLUSTERNAME} --class org.apache.spark.examples.SparkPi --jars file:///usr/lib/spark/examples/jars/spark-examples.jar -- 1000
+
+#List of jobs running on cluster.
+gcloud dataproc jobs list --cluster ${CLUSTERNAME}
+
+# Adding cheap preemptible workers to the cluster
+gcloud dataproc clusters update ${CLUSTERNAME} --num-preemptible-workers=2
+
+
+#SSH into master node of the cluster
+gcloud compute ssh ${CLUSTERNAME}-m -zone=us-east4-a
+
+#Check firewall
+gcloud compute firewall-rules list
+
+
+
 
 
