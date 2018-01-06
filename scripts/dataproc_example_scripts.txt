@@ -1,0 +1,8 @@
+# Get the Google sample code from github on Compute instance
+git clone https://github.com/GoogleCloudPlatform/training-data-analyst
+
+#Move to folder 
+cd training-data-analyst/courses/unstructured/
+
+#Run the below script to copy files from compute local to google bucket
+./replace_and_upload.sh rashnilsandeep

@@ -6,3 +6,19 @@ gcloud dataproc clusters create [CLUSTER_NAME]
 Get information on created cluster:
 cloud dataproc clusters describe [CLUSTER_NAME]
 
+#create firewall 
+gcloud compute --project=rashnilsandeep firewall-rules create cancerdata-test-firewall --description=Access\ to\ Cloud\ Shell --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8088,tcp:50070,tcp:8080 --source-ranges=100.35.187.96/32
+
+
+# Create a dataproc cluster
+gcloud dataproc clusters create test-cluster --zone us-east4-a --master-machine-type n1-standard-1 --master-boot-disk-size 50 --num-workers 2 --worker-machine-type n1-standard-1 --worker-boot-disk-size 50 --network=default
+
+# Delete a cluster
+gcloud dataproc clusters delete test-cluster
+
+# Create a bucket with the same name as project using gsutils
+
+gsutil mb -c regional -l us-east4 gs://$DEVSHELL_PROJECT_ID
+
+
+
